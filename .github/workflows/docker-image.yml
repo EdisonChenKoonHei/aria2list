@@ -7,8 +7,11 @@ on:
     branches: [ "main" ]
 
 jobs:
+
   build:
+
     runs-on: ubuntu-latest
+    
     steps:
     - uses: actions/checkout@v3 # pull代码到运行服务器上
     - name: Login to Aliyun Container Registry (ACR)
@@ -22,5 +25,5 @@ jobs:
       env:
         IMAGE_TAG: $(date +%s) # 用于标记容器版本号
       run: |
-        docker build -t registry.cn-shanghai.aliyuncs.com/sparkler/aria2list:$IMAGE_TAG .
-        docker push registry.cn-shanghai.aliyuncs.com/sparkler/aria2list:$IMAGE_TAG
+        docker build . --file Dockerfile --tag registry.cn-shanghai.aliyuncs.com/sparkler/aria2list:$(date +%s)
+        docker push registry.cn-shanghai.aliyuncs.com/sparkler/aria2list:$(date +%s)
