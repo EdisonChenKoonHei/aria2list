@@ -1,4 +1,4 @@
-name: actions
+name: Docker Image CI
 
 on:
   push:
@@ -7,11 +7,10 @@ on:
     branches: [ "main" ]
 
 jobs:
-  bt-product-release:
-    if: ${{ github.ref == 'refs/heads/main' }}  # 检测main分支是否有更新
+  build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2 # pull代码到运行服务器上
+    - uses: actions/checkout@v3 # pull代码到运行服务器上
     - name: Login to Aliyun Container Registry (ACR)
       uses: aliyun/acr-login@v1 # 使用阿里云镜像服务action
       with:
