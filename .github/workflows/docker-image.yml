@@ -25,5 +25,5 @@ jobs:
       env:
         IMAGE_TAG: $(date +%s) # 用于标记容器版本号
       run: |
-        docker build . --file Dockerfile --tag registry.cn-shanghai.aliyuncs.com/sparkler/aria2list:$(date +%s)
-        docker push registry.cn-shanghai.aliyuncs.com/sparkler/aria2list:$(date +%s)
+        docker build . --file Dockerfile --tag registry.cn-shanghai.aliyuncs.com/sparkler/aria2list:IMAGE_TAG
+        docker push registry.cn-shanghai.aliyuncs.com/sparkler/aria2list:$IMAGE_TAG
